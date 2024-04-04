@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<VideoTutorial /> Renderiza el componente VideoTutorial con la estructura esperada 1`] = `
+<View
+  pointerEvents="box-none"
+  style={
+    [
+      {
+        "overflow": "hidden",
+      },
+      {
+        "bottom": 0,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      },
+    ]
+  }
+>
+  <ViewManagerAdapter_ExpoVideoView
+    onError={[Function]}
+    onFullscreenUpdate={[Function]}
+    onLoad={[Function]}
+    onLoadStart={[Function]}
+    onReadyForDisplay={[Function]}
+    onStatusUpdate={[Function]}
+    resizeMode="mock"
+    source={
+      {
+        "headers": undefined,
+        "overridingExtension": null,
+        "uri": "",
+      }
+    }
+    status={
+      {
+        "isLooping": true,
+        "shouldPlay": true,
+      }
+    }
+    style={
+      [
+        {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        },
+        undefined,
+      ]
+    }
+    videoStyle={
+      [
+        {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        },
+        undefined,
+      ]
+    }
+  />
+</View>
+`;
