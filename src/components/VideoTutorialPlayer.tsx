@@ -20,14 +20,10 @@ const VideoTutorialPlayer: React.FC<VideoTutorialPlayerProps> = ({
     }
   }, [isPlaying, videoRef.current]);
 
-  const togglePlay: () => void = () => {
+  const pause: () => void = () => {
     if (videoRef.current != null) {
-      if (isPlaying) {
-        void videoRef.current.pauseAsync();
-      } else {
-        void videoRef.current.playAsync();
-      }
-      setPlaying(!isPlaying);
+      void videoRef.current.pauseAsync();
+      setPlaying(false);
       toggleBtnPlay();
     }
   };
@@ -35,7 +31,7 @@ const VideoTutorialPlayer: React.FC<VideoTutorialPlayerProps> = ({
   return (
     <TouchableWithoutFeedback
       style={styles.buttonTogglerPlay}
-      onPress={togglePlay}
+      onPress={pause}
     >
       <Video
         resizeMode={ResizeMode.STRETCH}
