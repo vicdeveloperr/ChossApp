@@ -4,8 +4,8 @@ import ScreenContainer from "../components/ScreenContainer";
 import Loader from "../components/Loader";
 import { StyleSheet } from "react-native";
 import { VideoTutorialController } from "../components/VideoTutorialController";
-import { VideoFullScreen } from "../components/videoTutorial/VideoFullScreen";
 import { useVideoTutorialActions } from "../components/videoTutorial/hooks/useVideoTutorialActions";
+import VideoTutorialPlayer from "../components/videoTutorial/VideoTutorialPlayer";
 
 const VideoTutorialScreen: React.FC = () => {
   const { isLoading } = useVideoTutorialLoadingState();
@@ -15,10 +15,7 @@ const VideoTutorialScreen: React.FC = () => {
     <>
       <ScreenContainer styles={styles.container}>
         <VideoTutorialController onPressAction={togglePlay}>
-          <VideoFullScreen
-            onLoadComplete={onVideoLoadComplete}
-            sourceUri="https://videos.pexels.com/video-files/5274575/5274575-hd_1080_2048_25fps.mp4"
-          />
+          <VideoTutorialPlayer onLoadComplete={onVideoLoadComplete} />
         </VideoTutorialController>
         <Buttons />
       </ScreenContainer>
