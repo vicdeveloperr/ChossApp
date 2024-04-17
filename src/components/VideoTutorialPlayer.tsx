@@ -36,7 +36,7 @@ const VideoTutorialPlayer: React.FC<VideoTutorialPlayerProps> = ({
         ref={videoRef}
         onLoad={onLoadComplete}
         source={{
-          uri: "https://player.vimeo.com/external/467436330.sd.mp4?s=76304706368278640ac086aa2232c50327b2491e&profile_id=165&oauth2_token_id=57447761",
+          uri: "https://videos.pexels.com/video-files/5274562/5274562-hd_720_1366_25fps.mp4",
         }}
         style={styles.video}
         isLooping
