@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { ResizeMode, Video } from "expo-av";
 import { StyleSheet, TouchableWithoutFeedback } from "react-native";
 import { useBtnPlayModalStore, useVideoPlayerStore } from "../stateManagement/";
@@ -13,12 +13,6 @@ const VideoTutorialPlayer: React.FC<VideoTutorialPlayerProps> = ({
   const videoRef = useRef<Video>(null);
   const { isPlaying, setPlaying } = useVideoPlayerStore((state) => state);
   const { toggleBtnPlay } = useBtnPlayModalStore((state) => state);
-
-  useEffect(() => {
-    if (isPlaying && videoRef.current !== null) {
-      void videoRef.current.playAsync();
-    }
-  }, [isPlaying, videoRef.current]);
 
   const togglePlay: () => void = () => {
     if (videoRef.current != null) {
