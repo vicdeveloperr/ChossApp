@@ -2,11 +2,11 @@
 
 exports[`<VideoTutorial /> Renderiza el componente VideoTutorial con la estructura esperada 1`] = `
 <View
-  pointerEvents="box-none"
   style={
     [
       {
         "overflow": "hidden",
+        "pointerEvents": "box-none",
       },
       {
         "bottom": 0,
