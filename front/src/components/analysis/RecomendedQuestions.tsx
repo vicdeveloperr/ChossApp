@@ -1,6 +1,7 @@
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { ScrollView, StyleSheet, Text } from "react-native";
 import { paragraph } from "../../utils/genericStyles";
 import { Button } from "../Button";
+import { v4 as uuidv4 } from "uuid";
 
 type RecomendedQuestionsType = (
   props: RecomendedQuestionsProps
@@ -9,7 +10,7 @@ type RecomendedQuestionsType = (
 interface ContainerProps {
   children: React.ReactNode;
 }
-const Container = ({ children }: ContainerProps) => {
+const Container: React.FC<ContainerProps> = ({ children }) => {
   return (
     <ScrollView
       horizontal
@@ -28,7 +29,10 @@ interface RecomendedQuestionsProps {
 export const RecomendedQuestions: RecomendedQuestionsType = ({ questions }) => {
   const elements = questions.map((question) => {
     return (
-      <Button styles={styles.questionContainer}>
+      <Button
+        key={uuidv4()}
+        styles={styles.questionContainer}
+      >
         <Text style={[paragraph, styles.questionText]}>{question}</Text>
       </Button>
     );
