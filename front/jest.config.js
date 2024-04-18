@@ -3,4 +3,5 @@ module.exports = {
   verbose: true,
   clearMocks: true,
   extensionsToTreatAsEsm: [".tsx", ".ts", ".jsx"],
+  setupFilesAfterEnv: ["./src/__test__/jest.setup.ts"],
 };
