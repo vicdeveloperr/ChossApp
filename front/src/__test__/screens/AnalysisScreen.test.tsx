@@ -1,6 +1,10 @@
-import { render } from "@testing-library/react-native";
+import { render, waitFor } from "@testing-library/react-native";
 import { AnalysisScreen } from "../../screens/AnalysisScreen";
 import type { ReactTestInstance } from "react-test-renderer";
+import { playSound } from "../../utils/playSound";
+
+jest.mock("uuid", () => ({ v4: () => Math.random() }));
+jest.mock("../../utils/playSound", () => ({ playSound: jest.fn() }));
 
 type renderComponentType = () => {
   getByTestId: (id: string) => ReactTestInstance;
@@ -38,9 +42,9 @@ describe("<AnalysisScreen />", () => {
     expect(getByTestId("UserMovementVideo")).toBeTruthy();
   });
 
-  it("Reproduce audio del análisis generado por el modelo", () => {
-    const { getByTestId } = renderComponent();
-
-    expect(getByTestId("AnalysisAudio")).toBeTruthy();
+  it("Reproduce audio del análisis generado por el modelo", async () => {
+    await waitFor(() => {
+      expect(playSound).toHaveBeenCalled();
+    });
   });
 });
