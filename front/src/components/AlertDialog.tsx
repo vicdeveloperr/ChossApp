@@ -6,19 +6,21 @@ interface AlertDialogProps {
   DialogActions: React.ReactNode;
   description: string;
   title: string;
+  visible?: boolean;
 }
 
 const AlertDialog: React.FC<AlertDialogProps> = ({
   DialogActions,
   description,
   title,
+  visible,
 }) => {
   return (
     <Portal>
       <Dialog
         style={styles.dialog}
         dismissable={false}
-        visible
+        visible={visible ?? true}
       >
         <Dialog.Title style={styles.dialogTitle}>{title}</Dialog.Title>
         <Dialog.Content>
