@@ -4,7 +4,7 @@
     "slug": "ChossApp",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "https://i.pinimg.com/564x/da/b3/d4/dab3d46a6fdbd00952cba4ee878256fe.jpg",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",
@@ -17,13 +17,17 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "https://i.pinimg.com/564x/da/b3/d4/dab3d46a6fdbd00952cba4ee878256fe.jpg",
         "backgroundColor": "#ffffff"
       }
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "extra": {}
+    "extra": {
+      "eas": {
+        "projectId": "e7ea344b-9633-459b-983c-6689c43c56a3"
+      }
+    }
   }
 }
