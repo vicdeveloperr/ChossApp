@@ -17,7 +17,7 @@
     "@react-navigation/native": "^6.1.9",
     "@react-navigation/stack": "^6.3.20",
     "expo": "latest",
-    "expo-av": "~13.10.5",
+    "expo-av": "~13.10.6",
     "expo-camera": "~14.1.1",
     "expo-dev-client": "~3.3.11",
     "expo-image-picker": "~14.7.1",
