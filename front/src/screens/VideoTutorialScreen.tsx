@@ -6,6 +6,7 @@ import { StyleSheet } from "react-native";
 import { VideoTutorialController } from "../components/VideoTutorialController";
 import { useVideoTutorialActions } from "../components/videoTutorial/hooks/useVideoTutorialActions";
 import VideoTutorialPlayer from "../components/videoTutorial/VideoTutorialPlayer";
+import { VideoDurationAlert } from "../components/videoTutorial/VideoDurationAlert";
 
 const VideoTutorialScreen: React.FC = () => {
   const { isLoading } = useVideoTutorialLoadingState();
@@ -19,6 +20,7 @@ const VideoTutorialScreen: React.FC = () => {
         </VideoTutorialController>
         <Buttons />
       </ScreenContainer>
+      <VideoDurationAlert />
       <Loader isLoading={isLoading} />
     </>
   );

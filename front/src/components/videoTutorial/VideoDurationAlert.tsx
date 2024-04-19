@@ -11,7 +11,7 @@ export const VideoDurationAlert: React.FC = () => {
   return (
     <AlertDialog
       title="Vídeo demasiado largo"
-      description="El vídeo es demasiado largo para ser procesado. Seleccione un vídeo de menos de 10 segundos"
+      description="Seleccione un vídeo de menos de 10 segundos."
       visible={isVideoPickerErrorDialogVisible}
       DialogActions={
         <AlertDialogButton
@@ -21,6 +21,6 @@ export const VideoDurationAlert: React.FC = () => {
           text="Continuar"
         />
       }
-    ></AlertDialog>
+    />
   );
 };
