@@ -1,7 +1,14 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useCallback } from "react";
 import { ResizeMode, Video } from "expo-av";
 import { StyleSheet, TouchableWithoutFeedback } from "react-native";
-import { useBtnPlayModalStore, useVideoPlayerStore } from "../../stateManagement/";
+import {
+  useBtnPlayModalStore,
+  useVideoPlayerStore,
+} from "../../stateManagement/";
+// @ts-expect-error - Esta url existe
+import videoTutorial from "../../../assets/allen-iverson-cross-tutorial.mp4";
+import { useNavigation, useFocusEffect } from "@react-navigation/native";
+import { unsubscribeVideoTutorialScreen } from "../../utils/unsubscribeVideoTutorialScreen";
 
 interface VideoTutorialPlayerProps {
   onLoadComplete: () => void;
@@ -13,12 +20,19 @@ const VideoTutorialPlayer: React.FC<VideoTutorialPlayerProps> = ({
   const videoRef = useRef<Video>(null);
   const { isPlaying, setPlaying } = useVideoPlayerStore((state) => state);
   const { toggleBtnPlay } = useBtnPlayModalStore((state) => state);
+  const { addListener } = useNavigation();
 
   useEffect(() => {
     if (isPlaying && videoRef.current !== null) {
       void videoRef.current.playAsync();
     }
   }, [isPlaying, videoRef.current]);
+
+  useFocusEffect(
+    useCallback(() => {
+      return unsubscribeVideoTutorialScreen(videoRef.current, addListener);
+    }, [])
+  );
 
   const pause: () => void = () => {
     if (videoRef.current != null) {
@@ -37,9 +51,7 @@ const VideoTutorialPlayer: React.FC<VideoTutorialPlayerProps> = ({
         resizeMode={ResizeMode.STRETCH}
         ref={videoRef}
         onLoad={onLoadComplete}
-        source={{
-          uri: "https://videos.pexels.com/video-files/5274562/5274562-hd_720_1366_25fps.mp4",
-        }}
+        source={videoTutorial}
         style={styles.video}
         isLooping
         shouldPlay
