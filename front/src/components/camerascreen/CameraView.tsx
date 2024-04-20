@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 import { Camera } from "expo-camera";
 import { StyleSheet } from "react-native";
 import useCameraTypeStore from "../../stateManagement/useCameraTypeStore";
@@ -13,21 +13,6 @@ const CameraView: React.FC<CameraViewProps> = ({ children }) => {
   camRef = useRef<Camera>(null);
 
   const { cameraType } = useCameraTypeStore((state) => state);
-
-  const [statusCameraPermissions, requestCameraPermissions] =
-    Camera.useCameraPermissions();
-
-  const [statusMicrophonePermissions, requestMicrophonePermissions] =
-    Camera.useMicrophonePermissions();
-
-  useEffect(() => {
-    if (statusCameraPermissions === null) {
-      void requestCameraPermissions();
-    }
-    if (statusMicrophonePermissions === null) {
-      void requestMicrophonePermissions();
-    }
-  }, []);
 
   return (
     <Camera
