@@ -1,13 +1,12 @@
 import { Video, ResizeMode } from "expo-av";
-import type { Video as VideoType } from "expo-av";
+import type { Video as VideoType, VideoProps } from "expo-av";
 import { StyleSheet } from "react-native";
 import { useRef, useEffect } from "react";
 import { useVideoPlayerStore } from "../../stateManagement";
 
-interface VideoTutorialProps {
+interface VideoTutorialProps extends VideoProps {
   onLoadComplete?: () => void;
   onLoadInit?: () => void;
-  videoParameters?: Record<string, any>;
   sourceUri: string;
 }
 
@@ -23,7 +22,9 @@ export const VideoFullScreen: React.FC<VideoTutorialProps> = ({
   onLoadComplete,
   onLoadInit,
   sourceUri,
-  videoParameters,
+  isMuted,
+  isLooping,
+  shouldPlay,
 }) => {
   const { isPlaying } = useVideoPlayerStore((state) => state);
   videoRef = useRef<VideoType>(null);
@@ -34,7 +35,7 @@ export const VideoFullScreen: React.FC<VideoTutorialProps> = ({
 
   return (
     <Video
-      {...videoParameters}
+      isMuted={isMuted}
       resizeMode={ResizeMode.STRETCH}
       ref={videoRef}
       onLoadStart={onLoadInit}
@@ -43,8 +44,8 @@ export const VideoFullScreen: React.FC<VideoTutorialProps> = ({
         uri: sourceUri,
       }}
       style={styles.video}
-      isLooping
-      shouldPlay
+      isLooping={isLooping ?? true}
+      shouldPlay={isMuted ?? true}
     />
   );
 };
