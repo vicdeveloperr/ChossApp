@@ -18,6 +18,7 @@ export const UserMovementVideo: React.FC = () => {
         onLoadComplete={() => {
           setIsLoading(false);
         }}
+        isMuted={true}
       />
       <View testID="UserMovementVideo"></View>
     </>
