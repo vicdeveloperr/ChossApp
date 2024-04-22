@@ -15,9 +15,9 @@ export const UserMovementVideo: React.FC = () => {
           setIsLoading(true);
         }}
         sourceUri={recorded}
-        onLoadComplete={() => {
-          setIsLoading(false);
-        }}
+        // onLoadComplete={() => {
+        //   setIsLoading(false);
+        // }}
         isMuted={true}
       />
       <View testID="UserMovementVideo"></View>

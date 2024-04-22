@@ -8,6 +8,7 @@ import pickVideoFromGallery from "../../../utils/pickVideoFromGallery";
 import type { video } from "../../../utils/pickVideoFromGallery";
 import { useProcessVideo } from "../../../utils/useProcessVideo";
 import type { VideoTutorialNavigator } from "../../../types/VideoTutorialScreenNavigator";
+import useLoaderVisibilityStore from "../../../stateManagement/useLoaderVisibilityStore";
 
 type ButtonsActions = () => {
   openCamera: () => void;
@@ -22,6 +23,7 @@ export const useButtonsActions: ButtonsActions = () => {
   const { setVideoPickerErrorDialogVisibility } =
     useVideoPickerErrorDialogVisibilityStore((state) => state);
   const processVideo = useProcessVideo();
+  const { setIsLoading } = useLoaderVisibilityStore();
 
   function openCamera(): void {
     navigate("camera");
@@ -35,7 +37,8 @@ export const useButtonsActions: ButtonsActions = () => {
   async function pickVideo(): Promise<void> {
     await pickVideoFromGallery()
       .then(async (video: video) => {
-        await processVideo(video.uri, navigate, "allen iverson cross");
+        await processVideo(video.uri, navigate, "ind and out");
+        setIsLoading(false);
       })
       .catch(() => {
         console.log("Mostró cuadro de diálogo");
