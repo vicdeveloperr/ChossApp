@@ -22,7 +22,7 @@ export const AnalysisScreen: React.FC = () => {
 
   useEffect(() => {
     void (async () => {
-      if (speech != null && isPlayingSpeech) {
+      if (speech != null && !isPlayingSpeech) {
         setIsPlayingSpeech(true);
         await playSound(speech);
       }

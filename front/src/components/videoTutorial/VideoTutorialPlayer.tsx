@@ -6,7 +6,7 @@ import {
   useVideoPlayerStore,
 } from "../../stateManagement/";
 // @ts-expect-error - Esta url existe
-import videoTutorial from "../../../assets/allen-iverson-cross-tutorial.mp4";
+import videoTutorial from "../../../assets/ind-and-out-tutorial.mp4";
 import { useNavigation, useFocusEffect } from "@react-navigation/native";
 import { unsubscribeVideoTutorialScreen } from "../../utils/unsubscribeVideoTutorialScreen";
 
